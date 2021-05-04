@@ -1,5 +1,7 @@
 package com.myapplicationdev.android.p04_revisionnotes;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -9,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class SecondActivity extends AppCompatActivity {
-	ListView lvData;
 
 	RevisionNotesArrayAdapter listAdapter;
 	ArrayAdapter aa;
