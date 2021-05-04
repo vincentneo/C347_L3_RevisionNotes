@@ -53,16 +53,45 @@ public class RevisionNotesArrayAdapter extends ArrayAdapter<Note> {
 			imageViews[i].setImageResource(android.R.drawable.btn_star_big_on);
 		}
 
-		/*
+
 		if (stars >= 5) {
 			iv5.setImageResource(android.R.drawable.btn_star_big_on);
 			iv4.setImageResource(android.R.drawable.btn_star_big_on);
 			iv3.setImageResource(android.R.drawable.btn_star_big_on);
 			iv2.setImageResource(android.R.drawable.btn_star_big_on);
 			iv1.setImageResource(android.R.drawable.btn_star_big_on);
-		}
-		 */
 
+	}
+		else if (stars == 4){
+		iv5.setImageResource(android.R.drawable.btn_star_big_off);
+		iv4.setImageResource(android.R.drawable.btn_star_big_on);
+		iv3.setImageResource(android.R.drawable.btn_star_big_on);
+		iv2.setImageResource(android.R.drawable.btn_star_big_on);
+		iv1.setImageResource(android.R.drawable.btn_star_big_on);
+	}
+		else if (stars == 3){
+		iv5.setImageResource(android.R.drawable.btn_star_big_off);
+		iv4.setImageResource(android.R.drawable.btn_star_big_off);
+		iv3.setImageResource(android.R.drawable.btn_star_big_on);
+		iv2.setImageResource(android.R.drawable.btn_star_big_on);
+		iv1.setImageResource(android.R.drawable.btn_star_big_on);
+	}
+		else if (stars == 2){
+		iv5.setImageResource(android.R.drawable.btn_star_big_off);
+		iv4.setImageResource(android.R.drawable.btn_star_big_off);
+		iv3.setImageResource(android.R.drawable.btn_star_big_off);
+		iv2.setImageResource(android.R.drawable.btn_star_big_on);
+		iv1.setImageResource(android.R.drawable.btn_star_big_on);
+	}
+		else if (stars == 1) {
+			iv5.setImageResource(android.R.drawable.btn_star_big_off);
+			iv4.setImageResource(android.R.drawable.btn_star_big_off);
+			iv3.setImageResource(android.R.drawable.btn_star_big_off);
+			iv2.setImageResource(android.R.drawable.btn_star_big_off);
+			iv1.setImageResource(android.R.drawable.btn_star_big_on);
+		}else{
+
+		}
 		return rowView;
 	}
 
