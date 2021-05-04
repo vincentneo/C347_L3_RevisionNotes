@@ -34,12 +34,12 @@ public class MainActivity extends AppCompatActivity {
                 // Create the DBHelper object, passing in the
                 // activity's Context
                 DBHelper db = new DBHelper(MainActivity.this);
-                db.onUpgrade(db.getWritableDatabase(), 1, 2);
+                //db.onUpgrade(db.getWritableDatabase(), 1, 2);
                 // Insert a task
                 long status = db.insertNote(editTextNote.getText().toString(), getStarsFromRadioID(radioGroupStars.getCheckedRadioButtonId()));
                 db.close();
 
-                String toastValue = (status > -1) ? "Insert (will fail if duplicate)" : "Failed to insert. Check fields";
+                String toastValue = (status > -1) ? "Insert" : "Failed to insert. Check fields";
                 Toast.makeText(MainActivity.this, toastValue,
                         Toast.LENGTH_LONG).show();
             }

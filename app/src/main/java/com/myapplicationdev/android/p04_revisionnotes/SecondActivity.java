@@ -16,6 +16,8 @@ public class SecondActivity extends AppCompatActivity {
 	ArrayAdapter aa;
 	ArrayList<Note> note;
 	DBHelper dbTask;
+	ListView lvData;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
