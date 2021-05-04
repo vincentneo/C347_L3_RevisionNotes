@@ -30,7 +30,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		//TODO CREATE TABLE Note
 		String createTableStatement = "CREATE TABLE " + TABLE_NOTE;
 		createTableStatement += " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, ";
-		createTableStatement += COLUMN_CONTENT + " TEXT, ";
+		createTableStatement += COLUMN_CONTENT + " TEXT NOT NULL UNIQUE, ";
 		createTableStatement += COLUMN_STARS + " INTEGER);";
 
 		db.execSQL(createTableStatement);
@@ -42,16 +42,19 @@ public class DBHelper extends SQLiteOpenHelper {
 		onCreate(db);
 	}
 
-	public void insertNote(String noteContent, int stars) {
+	public long insertNote(String noteContent, int stars) {
 		//TODO insert the data into the database
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
+		// if note content is blank
+		if (noteContent.trim().isEmpty()) { return -1; }
 
 		values.put(COLUMN_CONTENT, noteContent);
 		values.put(COLUMN_STARS, stars);
 
-		db.insert(TABLE_NOTE, null, values);
+		long status = db.insert(TABLE_NOTE, null, values);
 		db.close();
+		return status;
 	}
 
 	public ArrayList<Note> getAllNotes() {
