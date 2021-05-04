@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 DBHelper db = new DBHelper(MainActivity.this);
 
                 // Insert a task
-                db.insertNote(editTextNote.getText().toString(), radioGroupStars.getCheckedRadioButtonId());
+                db.insertNote(editTextNote.getText().toString(), getStarsFromRadioID(radioGroupStars.getCheckedRadioButtonId()));
                 db.close();
                 
                 Toast.makeText(MainActivity.this, "Inserted",
@@ -40,5 +40,16 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+    }
+
+    private int getStarsFromRadioID(int id) {
+        switch (id) {
+            case R.id.radio1: return 1;
+            case R.id.radio2: return 2;
+            case R.id.radio3: return 3;
+            case R.id.radio4: return 4;
+            case R.id.radio5: return 5;
+            default: return 0;
+        }
     }
 }
