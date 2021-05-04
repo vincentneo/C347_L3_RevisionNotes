@@ -47,6 +47,13 @@ public class RevisionNotesArrayAdapter extends ArrayAdapter<Note> {
 
 		tvNote.setText("C347 Wk 3 - " + currentNote.getNoteContent());
 		//Check if the property for starts >= 5, if so, "light" up the stars
+		ImageView[] imageViews = {iv1, iv2, iv3, iv4, iv5};
+
+		for (int i = 0; i < stars; i++) {
+			imageViews[i].setImageResource(android.R.drawable.btn_star_big_on);
+		}
+
+		/*
 		if (stars >= 5) {
 			iv5.setImageResource(android.R.drawable.btn_star_big_on);
 			iv4.setImageResource(android.R.drawable.btn_star_big_on);
@@ -54,6 +61,7 @@ public class RevisionNotesArrayAdapter extends ArrayAdapter<Note> {
 			iv2.setImageResource(android.R.drawable.btn_star_big_on);
 			iv1.setImageResource(android.R.drawable.btn_star_big_on);
 		}
+		 */
 
 		return rowView;
 	}
