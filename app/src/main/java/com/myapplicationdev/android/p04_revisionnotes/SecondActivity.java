@@ -1,11 +1,14 @@
 package com.myapplicationdev.android.p04_revisionnotes;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -18,6 +21,7 @@ public class SecondActivity extends AppCompatActivity {
 	DBHelper dbTask;
 	ListView lvData;
 
+	@RequiresApi(api = Build.VERSION_CODES.N)
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,7 +32,20 @@ public class SecondActivity extends AppCompatActivity {
 		note = db.getAllNotes();
 		db.close();
 
-		aa= new RevisionNotesArrayAdapter(this, R.layout.row, note);
+
+		Intent i = getIntent();
+		int good = i.getIntExtra("Good",0);
+		ArrayList<Note> filteredNotes = new ArrayList<>();
+		if (good > 0) {
+			for(Note n : note) {
+				if (n.getStars() >= good) {
+					filteredNotes.add(n);
+				}
+			}
+		} else {
+			filteredNotes = note;
+		}
+		aa= new RevisionNotesArrayAdapter(this, R.layout.row, filteredNotes);
 		lvData.setAdapter(aa);
 
 	}

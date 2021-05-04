@@ -15,9 +15,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    Button buttonInsertNote, buttonShowList;
+    Button buttonInsertNote, buttonShowList, buttonGd;
     EditText editTextNote;
     RadioGroup radioGroupStars;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         buttonShowList = findViewById(R.id.buttonShowList);
         editTextNote = findViewById(R.id.editTextNote);
         radioGroupStars = findViewById(R.id.radioGroupStars);
+        buttonGd = findViewById(R.id.buttonGd);
 
         buttonInsertNote.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -53,6 +55,18 @@ public class MainActivity extends AppCompatActivity {
                 DBHelper db = new DBHelper(MainActivity.this);
 
                 Intent i = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(i);
+            }
+        });
+
+        buttonGd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Create the DBHelper object, passing in the activity's content
+                DBHelper db = new DBHelper(MainActivity.this);
+
+                Intent i = new Intent(MainActivity.this, SecondActivity.class);
+                i.putExtra("Good",3);
                 startActivity(i);
             }
         });
